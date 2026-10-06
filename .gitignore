@@ -1,0 +1,13 @@
+target/
+node_modules/
+dist/
+.angular/
+.idea/
+.vscode/
+*.iml
+*.log
+.env
+certs/
+*.p12
+*.key
+.DS_Store
