@@ -1,0 +1,594 @@
+<div
+  id="inicio"
+  class="site"
+  [style.--accent]="config.accent"
+  [style.--soft]="config.soft"
+  [class.purple]="config.kind==='payment'"
+>
+  <div class="utility">
+    <span>Un proyecto de LuisDeveloper-Fer</span
+    ><span>Demostración · sin dinero real</span>
+  </div>
+  <header class="header wrap">
+    <a class="logo" href="#inicio" [attr.aria-label]="config.brand+' inicio'"
+      ><span class="logo-symbol">↗</span>{{config.brand}}<span
+        class="logo-period"
+        >.</span
+      ></a
+    >
+    <nav aria-label="Navegación principal">
+      <a href="#operaciones"
+        >{{config.kind==='secure'?'Acceso':'Operaciones'}}</a
+      ><a href="#como-funciona">Cómo funciona</a
+      ><a [href]="'https://github.com/LuisDeveloper-Fer/'+config.repo+'#readme'"
+        >El proyecto ↗</a
+      >
+    </nav>
+    <a href="#operaciones" class="header-cta"
+      >{{config.kind==='secure'?'Comprobar acceso':'Comenzar'}}
+      <span>↗</span></a
+    >
+  </header>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">{{config.label}}</span>
+        <h1>{{config.title}}<br /><span>{{config.emphasis}}</span></h1>
+        <p>{{config.intro}}</p>
+        <div class="hero-actions">
+          <a href="#operaciones" class="button primary"
+            >{{config.kind==='secure'?'Probar mi acceso':'Probar una
+            operación'}} <span>↗</span></a
+          ><a href="#como-funciona" class="button outline">Cómo funciona</a>
+        </div>
+        <span class="hero-note"
+          ><span class="note-dot"></span>Un entorno para explorar. Sin registros
+          ni cargos.</span
+        >
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        @switch(config.kind){ @case('async'){<img
+          src="assets/transfer-illustration.png"
+          alt=""
+          width="1456"
+          height="1080"
+          fetchpriority="high"
+        />} @case('payment'){
+        <div class="payment-art">
+          <div class="card back-card">
+            <span>mora.</span>
+            <div class="card-lines"></div>
+          </div>
+          <div class="bank-card">
+            <div class="card-top">mora.<span>↗</span></div>
+            <div class="chip"></div>
+            <div class="card-number">
+              •••• &nbsp; •••• &nbsp; •••• &nbsp; 0021
+            </div>
+            <div class="card-bottom">
+              <span>SOLO DEMOSTRACIÓN</span><span>JAVA / 21</span>
+            </div>
+          </div>
+          <div class="floating-note">
+            <span class="check-circle">✓</span>
+            <div>Una referencia.<small>El mismo resultado.</small></div>
+          </div>
+          <div class="orbit-ring"></div>
+        </div>
+        } @case('webhook'){
+        <div class="delivery-art">
+          <div class="delivery-path"></div>
+          <div class="envelope">
+            <span>enlace.</span
+            ><svg viewBox="0 0 300 180">
+              <path d="M0 0L150 105L300 0M0 180L105 80M300 180L195 80" />
+            </svg>
+          </div>
+          <span class="stamp">✓</span>
+          <div class="floating-note">
+            <span class="check-circle">↗</span>
+            <div>
+              El mensaje sigue.<small>Hasta confirmar su entrega.</small>
+            </div>
+          </div>
+        </div>
+        } @case('reconciliation'){
+        <div class="papers-art">
+          <div class="paper paper-left">
+            <span>REGISTRO INTERNO</span><b>TX001</b>
+            <p>S/ 100.00</p>
+            <i></i><i></i><i></i>
+          </div>
+          <div class="paper paper-right">
+            <span>REPORTE PROVEEDOR</span><b>TX001</b>
+            <p>S/ 99.00</p>
+            <i></i><i></i><i></i>
+          </div>
+          <div class="difference-sticker">
+            ≠<span>Cada diferencia<br />tiene una razón.</span>
+          </div>
+          <small class="art-caption">Ejemplo ilustrativo</small>
+        </div>
+        } @case('secure'){
+        <div class="secure-art">
+          <div class="door">
+            <div class="door-arch"></div>
+            <div class="door-line"></div>
+            <span class="keyhole">●</span>
+          </div>
+          <div class="access-card">
+            <span class="avatar-symbol">●</span
+            ><strong>Identidad<br />verificada.</strong>
+            <div class="access-lines"></div>
+          </div>
+          <div class="floating-note">
+            <span class="check-circle">✓</span>
+            <div>Acceso con criterio.<small>Identidad + permiso.</small></div>
+          </div>
+        </div>
+        } @case('monitor'){
+        <div class="monitor-art">
+          <div class="chart-paper">
+            <span>UNA PERSPECTIVA MÁS CLARA</span
+            ><svg viewBox="0 0 360 190">
+              <path class="chart-grid" d="M0 40H360M0 90H360M0 140H360" />
+              <path
+                class="chart-line"
+                d="M0 150L42 124L75 136L118 60L156 85L193 42L230 62L270 18L310 34L355 4"
+              />
+            </svg>
+            <div class="chart-labels">
+              <span>ACTIVIDAD</span><span>TIEMPO →</span>
+            </div>
+          </div>
+          <div class="floating-note">
+            <span class="check-circle">↗</span>
+            <div>
+              Del detalle al contexto.<small>Una operación a la vez.</small>
+            </div>
+          </div>
+          <small class="art-caption"
+            >Representación ilustrativa, no datos en vivo</small
+          >
+        </div>
+        } }
+      </div>
+    </div>
+    <svg
+      class="hero-wave"
+      viewBox="0 0 1440 90"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <path d="M0 20C230 130 400 0 690 40S1170 100 1440 14V90H0Z" />
+    </svg>
+  </section>
+  <section class="wrap offerings">
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow">UN POCO MÁS SIMPLE</span>
+        <h2>Hecho para entender<br />lo que sucede.</h2>
+      </div>
+      <p>
+        Tres ideas que guían este proyecto.<br />Y que puedes comprobar por ti
+        mismo.
+      </p>
+    </div>
+    <div class="feature-grid">
+      @for(feature of config.features;track feature[0]){
+      <article class="feature">
+        <span class="feature-number">{{feature[0]}}</span>
+        <h3>{{feature[1]}}</h3>
+        <p>{{feature[2]}}</p>
+      </article>
+      }
+    </div>
+  </section>
+  <section id="operaciones" class="operations-section">
+    <div class="wrap">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">VAMOS A PROBARLO</span>
+          <h2>{{config.form}}</h2>
+        </div>
+        <span class="connection" [class.offline]="!online()"
+          ><span></span>{{online()?'Servicio conectado':'Esperando
+          conexión'}}</span
+        >
+      </div>
+      @if(['async','payment','webhook'].includes(config.kind)){
+      <div
+        class="scenario-tabs"
+        role="group"
+        aria-label="Escenarios de demostración"
+      >
+        <button
+          [class.active]="activeScenario==='normal'"
+          (click)="scenarioChoice('normal')"
+        >
+          Operación normal</button
+        ><button
+          [class.active]="activeScenario==='slow'"
+          (click)="scenarioChoice('slow')"
+        >
+          {{config.kind==='payment'?'Respuesta
+          perdida':config.kind==='webhook'?'Límite de solicitudes':'Proveedor
+          lento'}}</button
+        ><button
+          [class.active]="activeScenario==='error'"
+          (click)="scenarioChoice('error')"
+        >
+          {{config.kind==='payment'?'Pago declinado':'Servicio con errores'}}
+        </button>
+      </div>
+      }
+      <div class="operation-grid">
+        <form class="operation-form" #form="ngForm" (ngSubmit)="send()">
+          <div class="form-heading">
+            <span class="small-circle">1</span>
+            <h3>Los detalles</h3>
+          </div>
+          @switch(config.kind){ @case('async'){
+          <div class="field-row">
+            <div>
+              <label for="amount">Importe</label
+              ><input
+                id="amount"
+                name="amount"
+                type="number"
+                min="0.01"
+                max="999999999.99"
+                step="0.01"
+                required
+                [(ngModel)]="amount"
+              />
+            </div>
+            <div>
+              <label for="currency">Moneda</label
+              ><select id="currency" name="currency" [(ngModel)]="currency">
+                <option>PEN</option>
+                <option>USD</option>
+                <option>EUR</option>
+              </select>
+            </div>
+          </div>
+          <label for="scenario">Comportamiento del proveedor</label
+          ><select id="scenario" name="scenario" [(ngModel)]="scenario">
+            <option value="SUCCESS">Responde correctamente</option>
+            <option value="SLOW">Responde lentamente</option>
+            <option value="ERROR">Devuelve un error</option>
+            <option value="NEVER">No responde</option>
+            <option value="RATE_LIMIT">Limita las solicitudes</option>
+          </select>
+          <p class="field-hint">
+            La confirmación de recepción llega antes del resultado del
+            proveedor.
+          </p>
+          } @case('payment'){
+          <div class="field-row">
+            <div>
+              <label for="amount">Importe del pago</label
+              ><input
+                id="amount"
+                name="amount"
+                type="number"
+                min="0.01"
+                max="999999999.99"
+                step="0.01"
+                required
+                [(ngModel)]="amount"
+              />
+            </div>
+            <div>
+              <label for="currency">Moneda</label
+              ><select id="currency" name="currency" [(ngModel)]="currency">
+                <option>PEN</option>
+                <option>USD</option>
+                <option>EUR</option>
+              </select>
+            </div>
+          </div>
+          <label for="scenario">Resultado simulado</label
+          ><select id="scenario" name="scenario" [(ngModel)]="scenario">
+            <option value="APPROVED">Pago aprobado</option>
+            <option value="DECLINED">Pago declinado</option>
+            <option value="LOST_RESPONSE">
+              Se pierde la respuesta
+            </option></select
+          ><label for="reference">Referencia de operación</label
+          ><input
+            id="reference"
+            name="reference"
+            maxlength="64"
+            pattern="[a-zA-Z0-9_-]{1,64}"
+            required
+            [(ngModel)]="idempotencyKey"
+          />
+          <div class="hint-row">
+            <span>Reutilízala para probar la idempotencia.</span
+            ><button type="button" class="text-button" (click)="newKey()">
+              Nueva referencia ↗
+            </button>
+          </div>
+          } @case('webhook'){<label for="eventType">Tipo de evento</label
+          ><input
+            id="eventType"
+            name="eventType"
+            required
+            pattern="[a-z.]{1,40}"
+            [(ngModel)]="eventType"
+          /><label for="eventMessage">Mensaje</label
+          ><textarea
+            id="eventMessage"
+            name="eventMessage"
+            required
+            maxlength="512"
+            [(ngModel)]="eventMessage"
+            rows="4"
+          ></textarea>
+          <p class="field-hint">
+            Se guardará el evento antes de intentar su entrega al receptor.
+          </p>
+          } @case('reconciliation'){<label for="internal"
+            >Registro interno</label
+          ><input
+            class="file-input"
+            aria-label="Cargar CSV interno"
+            type="file"
+            accept=".csv,text/csv"
+            (change)="loadCsv($event,'internal')"
+          /><textarea
+            id="internal"
+            name="internal"
+            required
+            [(ngModel)]="internalCsv"
+            rows="4"
+          ></textarea
+          ><label for="provider">Reporte del proveedor</label
+          ><input
+            class="file-input"
+            aria-label="Cargar CSV proveedor"
+            type="file"
+            accept=".csv,text/csv"
+            (change)="loadCsv($event,'provider')"
+          /><textarea
+            id="provider"
+            name="provider"
+            required
+            [(ngModel)]="providerCsv"
+            rows="4"
+          ></textarea>
+          <p class="field-hint">
+            CSV: reference,amount,currency. Hasta 1.000 filas por archivo.
+          </p>
+          } @case('secure'){<label for="token">Token de acceso</label
+          ><input
+            id="token"
+            name="token"
+            type="password"
+            required
+            [(ngModel)]="token"
+            autocomplete="off"
+            placeholder="Pega el token de Keycloak"
+          />
+          <p class="field-hint">
+            Se mantiene solo en esta pantalla, sin guardarlo en el navegador.
+          </p>
+          <label for="resource">Recurso a consultar</label
+          ><select id="resource" name="resource" [(ngModel)]="endpoint">
+            <option value="/api/me">Mi identidad</option>
+            <option value="/api/reports">Reporte de administración</option>
+            <option value="/api/accounts/">
+              Cuenta por propietario
+            </option></select
+          >@if(endpoint==='/api/accounts/'){<label for="owner"
+            >Identificador del propietario</label
+          ><input id="owner" name="owner" required [(ngModel)]="owner" />}<a
+            class="inline-link"
+            [href]="'https://github.com/LuisDeveloper-Fer/'+config.repo+'/blob/main/examples/requests.sh'"
+            >Cómo obtener un token de prueba ↗</a
+          >} @case('monitor'){<label for="service">Servicio de origen</label
+          ><select id="service" name="service" [(ngModel)]="service">
+            <option value="PAYMENTS">Pagos</option>
+            <option value="WEBHOOKS">Notificaciones</option>
+            <option value="RECONCILIATION">Conciliación</option>
+          </select>
+          <div class="field-row">
+            <div>
+              <label for="outcome">Resultado</label
+              ><select id="outcome" name="outcome" [(ngModel)]="outcome">
+                <option value="SUCCESS">Correcto</option>
+                <option value="ERROR">Error</option>
+              </select>
+            </div>
+            <div>
+              <label for="duration">Duración (ms)</label
+              ><input
+                id="duration"
+                name="duration"
+                type="number"
+                min="0"
+                max="60000"
+                required
+                [(ngModel)]="durationMs"
+              />
+            </div>
+          </div>
+          <p class="field-hint">
+            Se asignará una referencia única y la hora actual al evento.
+          </p>
+          } }
+          <button
+            class="button primary submit"
+            [disabled]="busy()||form.invalid"
+            type="submit"
+          >
+            {{busy()?'Procesando…':config.button}} <span>↗</span>
+          </button>
+          <p class="form-message" role="status">{{message()}}</p>
+          <span class="form-disclaimer"
+            >Solo datos ficticios. Esta operación no mueve dinero.</span
+          >
+        </form>
+        <div class="result">
+          <div class="form-heading">
+            <span class="small-circle">2</span>
+            <h3>El resultado</h3>
+          </div>
+          @if(selected();as item){
+          <div class="result-icon">
+            {{item['error']||item['status']==='FAILED'?'!':'↗'}}
+          </div>
+          <h3 class="result-title">{{status(item)}}</h3>
+          @if(item['amount']){
+          <div class="result-amount">
+            {{item['currency']}} {{item['amount']}}
+          </div>
+          }@if(item['id']){<span class="result-label">REFERENCIA</span>
+          <p class="reference">{{item['id']}}</p>
+          }@if(item['detail']){
+          <p>{{item['detail']}}</p>
+          }@if(item['error']){
+          <p class="failure-detail">{{item['error']}}</p>
+          }@if(item['subject']){<span class="result-label">IDENTIDAD</span>
+          <p class="reference">{{item['subject']}}</p>
+          <p>Permisos: {{display(item['roles'])}}</p>
+          }@if(item['discrepancyCount']!==undefined){
+          <div class="result-amount">
+            {{item['discrepancyCount']}} diferencias
+          </div>
+          <ul class="differences">
+            @for(diff of differences();track $index){
+            <li>
+              <strong>{{diff['reference']}}</strong
+              ><span>{{diff['explanation']}}</span>
+            </li>
+            }
+          </ul>
+          }@if(item['attempts']!==undefined){
+          <p>{{item['attempts']}} intento(s) de entrega</p>
+          }@if(selectedId()&&config.kind==='payment'){<button
+            class="button outline compact"
+            [disabled]="busy()"
+            (click)="action('/api/payments/'+selectedId()+'/reversals')"
+          >
+            Solicitar reverso ↗</button
+          >}@if(selectedId()&&config.kind==='webhook'&&item['status']==='FAILED'){<button
+            class="button outline compact"
+            [disabled]="busy()"
+            (click)="action('/api/deliveries/'+selectedId()+'/replay')"
+          >
+            Reintentar entrega ↗</button
+          >}
+          <details class="technical">
+            <summary>Ver respuesta técnica</summary>
+            <pre>{{selected() | json}}</pre>
+          </details>
+          }@else{
+          <div class="empty-result">
+            <span class="empty-result-mark">↗</span>
+            <h3>Aquí comienza<br />el seguimiento.</h3>
+            <p>
+              Completa el formulario.<br />El resultado aparecerá en este
+              espacio.
+            </p>
+          </div>
+          }
+        </div>
+      </div>
+      <div class="activity">
+        <div class="activity-heading">
+          <h3>Actividad reciente <span>{{rows().length}}</span></h3>
+          <button class="text-button" (click)="refresh()">Actualizar ↻</button>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                @for(column of config.columns;track column){
+                <th>{{labels[column]||column}}</th>
+                }
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              @for(row of rows();track $index){
+              <tr>
+                @for(column of config.columns;track column){
+                <td [attr.title]="display(row[column])">
+                  @if(column==='status'){<span
+                    class="status-badge"
+                    [class.failure]="['ERROR','FAILED','DECLINED'].includes(display(row[column]))"
+                    >{{outcomes[display(row[column])]||display(row[column])}}</span
+                  >}@else{ {{display(row[column])}} }
+                </td>
+                }
+                <td>
+                  <button class="text-button" (click)="selected.set(row)">
+                    Ver detalle ↗
+                  </button>
+                </td>
+              </tr>
+              }@empty{
+              <tr>
+                <td
+                  class="empty-table"
+                  [attr.colspan]="config.columns.length+1"
+                >
+                  Todavía no hay actividad. Prueba tu primera operación.
+                </td>
+              </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+        <div class="activity-foot">
+          <span>Últimos registros disponibles · no es un total histórico</span
+          ><span>{{lastChecked()?'Actualizado '+lastChecked():''}}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="como-funciona" class="wrap how">
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow">ASÍ DE SENCILLO</span>
+        <h2>De la solicitud<br />al resultado.</h2>
+      </div>
+      <a
+        class="inline-link"
+        [href]="'https://github.com/LuisDeveloper-Fer/'+config.repo+'/blob/main/docs/architecture.md'"
+        [attr.href]="'https://github.com/LuisDeveloper-Fer/'+config.repo+'/blob/main/docs/adr/001-design.md'"
+        >Explorar la arquitectura ↗</a
+      >
+    </div>
+    <div class="steps">
+      @for(step of config.steps;track step){
+      <article>
+        <span>{{'0'+($index+1)}}</span>
+        <h3>{{step}}</h3>
+        <p>{{config.features[$index][2]}}</p>
+      </article>
+      }
+    </div>
+  </section>
+  <section class="closing">
+    <div class="wrap">
+      <h2>
+        La experiencia por delante.<br />La ingeniería, detrás de cada paso.
+      </h2>
+      <a
+        class="button outline"
+        [href]="'https://github.com/LuisDeveloper-Fer/'+config.repo"
+        >Conoce el código ↗</a
+      >
+    </div>
+  </section>
+  <footer class="wrap">
+    <a class="logo" href="#inicio">{{config.brand}}.</a>
+    <p>
+      Diseñado como proyecto de portafolio.<br />Java · Spring Boot · Angular
+    </p>
+    <a href="https://github.com/LuisDeveloper-Fer">LuisDeveloper-Fer ↗</a>
+  </footer>
+</div>

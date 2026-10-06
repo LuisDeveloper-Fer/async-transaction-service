@@ -1,0 +1,53 @@
+export const config = {
+  name: "Async Transaction Service",
+  tag: "RESILIENCE LAB",
+  description: "Acepta rápido. Procesa con límites. Observa cada resultado.",
+  post: "/api/transactions",
+  list: "/api/transactions",
+  sample: {
+    amount: 125.5,
+    currency: "PEN",
+    scenario: "SUCCESS",
+  },
+  columns: ["id", "status", "scenario", "error"],
+  concepts: ["WebClient", "Backpressure", "Circuit breaker"],
+  scenarios: ["SUCCESS", "SLOW", "ERROR", "NEVER", "RATE_LIMIT"],
+  repo: "async-transaction-service",
+  index: 1,
+  secure: false,
+  payment: false,
+  monitor: false,
+  brand: "nexo",
+  label: "TRANSFERENCIAS, SIN ESPERAS",
+  title: "Tu operación sigue.",
+  emphasis: "Tú también.",
+  intro:
+    "Envía una transacción y sigue con lo tuyo. Nosotros te mostramos qué sucede hasta que llega a su destino.",
+  accent: "#ffd338",
+  soft: "#f4f4f0",
+  kind: "async",
+  form: "Envía tu primera operación",
+  button: "Enviar operación",
+  steps: [
+    "Elige una operación",
+    "La enviamos a su destino",
+    "Consulta el resultado",
+  ],
+  features: [
+    [
+      "01",
+      "A tu ritmo",
+      "Recibe una confirmación de recepción sin esperar al proveedor.",
+    ],
+    [
+      "02",
+      "Todo a la vista",
+      "Sigue cada operación desde su envío hasta el resultado final.",
+    ],
+    [
+      "03",
+      "Preparados para fallos",
+      "Prueba qué pasa cuando un servicio tarda, falla o no responde.",
+    ],
+  ],
+};
