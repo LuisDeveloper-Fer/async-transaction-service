@@ -1,0 +1,27 @@
+name: async-transaction-service
+services:
+  api:
+    build: .
+    ports: ["127.0.0.1:${API_PORT:-8080}:8080"]
+    environment:
+      PROVIDER_URL: http://simulator:9091
+    depends_on: [simulator]
+  frontend:
+    build: ./frontend
+    ports: ["127.0.0.1:${UI_PORT:-4200}:8080"]
+    depends_on: [api]
+  simulator:
+    build: ./simulator
+  prometheus:
+    image: prom/prometheus:v3.5.0
+    ports: ["127.0.0.1:${PROMETHEUS_PORT:-9090}:9090"]
+    volumes: ["./ops/prometheus.yml:/etc/prometheus/prometheus.yml:ro"]
+  grafana:
+    image: grafana/grafana:12.1.0
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: local-demo-only
+    ports: ["127.0.0.1:${GRAFANA_PORT:-3000}:3000"]
+    volumes:
+      - ./ops/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./ops/grafana/dashboards:/var/lib/grafana/dashboards:ro

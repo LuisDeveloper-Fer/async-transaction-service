@@ -43,7 +43,7 @@ Admisión global por instancia: 10 solicitudes/s, sin espera. Saturación → 42
 Resilience4j, ventana de 10 llamadas, mínimo 5, umbral 50%, espera OPEN de 5 s, 2 pruebas HALF_OPEN. 5xx y timeouts cuentan; 429 remoto se registra pero se excluye del porcentaje de fallos. Rechazos de admisión y circuit open no son llamadas remotas. Sin fallback que invente un éxito.
 
 ## 10. Observabilidad
-Correlation ID acotado, validado y propagado; trace ID W3C mediante Micrometer Tracing. Logs de cambios de estado sin payload financiero. Métricas de accepted/rejected/completed, queue wait, entrega, latencia end-to-end, in-flight, cola, pool y circuit breaker; histogramas y percentiles en Prometheus. IDs nunca son etiquetas de métricas. Actuator y herramientas de demo se limitan a uso local; producción requeriría autenticación y segmentación.
+Correlation ID acotado, validado y propagado; contexto traceparent W3C validado y propagado explícitamente (sin exportación de spans). Logs de cambios de estado sin payload financiero. Métricas de accepted/rejected/completed, queue wait, entrega, latencia end-to-end, in-flight, cola, pool y circuit breaker; histogramas y percentiles en Prometheus. IDs nunca son etiquetas de métricas. Actuator y herramientas de demo se limitan a uso local; producción requeriría autenticación y segmentación.
 
 ## 11. Pruebas
 Unitarias para validación, clasificación y admisión; integración con HTTP real en puerto efímero para success, 500, slow, never, 429, propagación de IDs, circuit open/recovery y saturación. Verificar que POST devuelve 202 sin esperar al proveedor, y que errores terminan en estados consultables. Angular build estricto y comprobación del stack Compose cuando Docker esté disponible.
