@@ -1356,3 +1356,14 @@ footer > a:last-child {
     transition: none;
   }
 }
+
+@media(max-width:480px){
+ .header{flex-wrap:wrap;height:auto;padding:20px 0;gap:16px}
+ .header nav{width:100%;justify-content:space-between;border-top:1px solid #eeeeea;padding-top:15px}
+ .header .logo{margin:auto}
+ .utility{font-size:7px}
+ h1{font-size:41px;letter-spacing:-1.8px}
+ .hero-copy>p{font-size:12px}
+ .field-row{gap:12px}
+ .hint-row{align-items:flex-start;flex-direction:column;gap:8px}
+}
