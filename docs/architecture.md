@@ -4,7 +4,7 @@
 Un servicio WebFlux expone una API de admisión y consulta. Una cola en memoria acotada entrega a un único consumidor Reactor con `flatMap(..., concurrency)`. WebClient envía al simulador independiente. Angular es un cliente de demostración; Prometheus y Grafana observan el backend. No se añaden base de datos, broker ni microservicios innecesarios.
 
 ## 2. Estructura
-`src/main/java/dev/portfolio/async/{api,application,domain,infrastructure}`; `src/test/java`; `simulator/`; `frontend/`; `ops/`; `docs/adr/`; `examples/`. Dominio sin Spring; aplicación gestiona admisión/estados; infraestructura gestiona HTTP y resiliencia; API valida contratos.
+`src/main/java/dev/portfolio/{api,application,domain,infrastructure}`; `src/test/java`; `simulator/`; `frontend/`; `ops/`; `docs/adr/`; `examples/`. Dominio sin Spring; aplicación gestiona admisión/estados; infraestructura gestiona HTTP y resiliencia; API valida contratos.
 
 ## 3. Flujo
 Validar importe/moneda/escenario y correlation ID → comprobar rate limit y capacidad → guardar QUEUED → encolar → responder 202 con Location → RUNNING → llamada HTTP → SUCCEEDED o FAILED. El cliente consulta por ID; 202 nunca promete éxito financiero.
@@ -49,4 +49,4 @@ Correlation ID acotado, validado y propagado; contexto traceparent W3C validado 
 Unitarias para validación, clasificación y admisión; integración con HTTP real en puerto efímero para success, 500, slow, never, 429, propagación de IDs, circuit open/recovery y saturación. Verificar que POST devuelve 202 sin esperar al proveedor, y que errores terminan en estados consultables. Angular build estricto y comprobación del stack Compose cuando Docker esté disponible.
 
 ## Límites deliberados
-Almacenamiento y cola volátiles; retención de resultados terminales 15 min, máximo 1000 registros; reiniciar pierde registros. Shutdown deja de admitir, espera hasta 5 s y cancela trabajo pendiente. No es un procesador de pagos productivo. Los límites se configuran y deben dimensionarse mediante mediciones.
+Almacenamiento y cola volátiles; limpieza de terminales de más de 15 min al admitir nuevas operaciones, máximo 1000 registros; reiniciar pierde registros. Shutdown deja de admitir, espera hasta 5 s y cancela trabajo pendiente. No es un procesador de pagos productivo. Los límites se configuran y deben dimensionarse mediante mediciones.

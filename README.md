@@ -20,6 +20,12 @@ Proyecto independiente del [Backend Systems Lab de Luis](https://github.com/Luis
 
 **Experimento principal:** Envía SUCCESS, SLOW, ERROR, NEVER y RATE_LIMIT. Compara el 202 inicial con el estado final. Provoca varios fallos para abrir el circuito y observa su recuperación.
 
+## Vista previa
+
+![Nexo · transferencias — interfaz Angular](docs/preview.png)
+
+Interfaz con formularios de operación, estado consultable y detalle técnico desplegable. La imagen muestra la portada; para ejecutar el flujo completo sigue las instrucciones de abajo.
+
 ## Ejecutar
 
 Requisitos: **JDK 21**, Maven 3.9+, Node 22.12+ para Angular y Docker Compose para el stack completo. [Compatibilidad de Spring Boot](https://docs.spring.io/spring-boot/system-requirements.html) · [Compatibilidad de Angular](https://angular.dev/reference/versions).
@@ -131,7 +137,7 @@ examples/           Requests reproducibles
 
 ## Alcance honesto
 
-Cola y registros en memoria; reiniciar pierde trabajo. Retención terminal de 15 minutos, máximo 1000 registros, expulsando el terminal más antiguo al llenar el almacén. No hay entrega durable. Se propaga traceparent W3C, pero no se exportan spans. Límites y timeouts configurables mediante dispatch.*.
+Cola y registros en memoria; reiniciar pierde trabajo. Limpieza de terminales de más de 15 minutos al admitir nuevas operaciones; máximo 1000 registros, expulsando el terminal más antiguo al llenar el almacén. No hay entrega durable. Se propaga traceparent W3C, pero no se exportan spans. Límites y timeouts configurables mediante dispatch.*.
 
 API de laboratorio sin autenticación, enlazada localmente. [secure-api-demo](https://github.com/LuisDeveloper-Fer/secure-api-demo) aborda seguridad por separado.
 
