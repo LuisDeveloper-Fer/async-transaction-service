@@ -20,6 +20,10 @@ Proyecto independiente del [Backend Systems Lab de Luis](https://github.com/Luis
 
 **Experimento principal:** Envía SUCCESS, SLOW, ERROR, NEVER y RATE_LIMIT. Compara el 202 inicial con el estado final. Provoca varios fallos para abrir el circuito y observa su recuperación.
 
+## Probar en Internet
+
+[**Abrir demo interactiva**](https://luisdeveloper-fer.github.io/async-transaction-service/) · Simulación en navegador, sin backend Java. [Alcance](docs/PUBLIC-DEMO.md).
+
 ## Vista previa
 
 ![Nexo · transferencias — interfaz Angular](docs/preview.png)

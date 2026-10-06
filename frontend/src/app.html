@@ -5,6 +5,7 @@
   [style.--soft]="config.soft"
   [class.purple]="config.kind==='payment'"
 >
+  @if(browserDemo){<aside class="demo-notice"><strong>Demo interactiva · simulación en navegador</strong><span>Sin backend Java conectado. Datos temporales: se borran al recargar.</span></aside>}
   <div class="utility">
     <span>Un proyecto de LuisDeveloper-Fer</span
     ><span>Demostración · sin dinero real</span>
@@ -192,7 +193,7 @@
           <h2>{{config.form}}</h2>
         </div>
         <span class="connection" [class.offline]="!online()"
-          ><span></span>{{online()?'Servicio conectado':'Esperando
+          ><span></span>{{online()?(browserDemo?'Simulación disponible':'Servicio conectado'):'Esperando
           conexión'}}</span
         >
       </div>

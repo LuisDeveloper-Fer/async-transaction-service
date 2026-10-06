@@ -4,12 +4,15 @@ import {
   HttpClient,
   HttpErrorResponse,
   provideHttpClient,
+  withInterceptors,
 } from "@angular/common/http";
 import { JsonPipe } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { timer, EMPTY, catchError, exhaustMap } from "rxjs";
 import { config } from "./config";
+
+import { browserDemo, demoInterceptor } from "./demo";
 
 type Row = Record<string, unknown>;
 @Component({
@@ -20,6 +23,7 @@ type Row = Record<string, unknown>;
 })
 class App {
   readonly config = config;
+  readonly browserDemo = browserDemo;
   private readonly http = inject(HttpClient);
   private readonly destroy = inject(DestroyRef);
   readonly rows = signal<Row[]>([]);
@@ -294,6 +298,6 @@ class App {
     }
   }
 }
-bootstrapApplication(App, { providers: [provideHttpClient()] }).catch(
+bootstrapApplication(App, { providers: [provideHttpClient(withInterceptors([demoInterceptor]))] }).catch(
   console.error,
 );

@@ -1367,3 +1367,5 @@ footer > a:last-child {
  .field-row{gap:12px}
  .hint-row{align-items:flex-start;flex-direction:column;gap:8px}
 }
+
+.demo-notice{background:#24463b;color:#fff;padding:14px 5%;display:flex;flex-wrap:wrap;gap:8px 28px;font:14px/1.5 Arial,sans-serif}.demo-notice span{color:#e0eade}
