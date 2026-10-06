@@ -10,5 +10,9 @@ management:
     distribution:
       percentiles-histogram:
         http.server.requests: true
+        transactions.delivery: true
+        transactions.end.to.end: true
+        transactions.queue.wait: true
+spring.codec.max-in-memory-size: 16KB
 server:
   shutdown: graceful
