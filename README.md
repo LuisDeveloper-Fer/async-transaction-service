@@ -77,9 +77,9 @@ La suscripción pertenece al worker, no al controlador. La admisión ocupa un pe
 
 ```bash
 curl -i -X POST http://localhost:8080/api/transactions \
-+  -H 'Content-Type: application/json' \
-+  -H 'X-Correlation-ID: interview-01' \
-+  --data '{"amount":125.5,"currency":"PEN","scenario":"SUCCESS"}'
+  -H 'Content-Type: application/json' \
+  -H 'X-Correlation-ID: interview-01' \
+  --data '{"amount":125.5,"currency":"PEN","scenario":"SUCCESS"}'
 ```
 
 Ejemplo de respuesta, campos relevantes:
